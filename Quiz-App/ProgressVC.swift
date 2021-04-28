@@ -9,15 +9,15 @@ import UIKit
 
 class ProgressVC: UIViewController {
 
-    let progressView = ProgressView()
+    let viewModel = ProgressViewModel()
     
     override func loadView() {
-        view = progressView
+        view = viewModel.progressView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel.animateRings()
     }
     
 

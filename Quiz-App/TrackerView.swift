@@ -11,20 +11,32 @@ class TrackerView: UIView {
 
     public var categoryName: String
     
-    public var dsaCircle: CAShapeLayer = {
-        var dsaShape = CAShapeLayer()
-//        var dsaPath = UIBezierPath(arcCenter: CGPoint(x: UIScreen.main.bounds.maxX/1.35, y: UIScreen.main.bounds.maxY/2), radius: 60, startAngle: 0, endAngle: .pi * 2, clockwise: true)
-//        dsaShape.path = dsaPath.cgPath
-//        dsaShape.lineWidth = 12
-//        dsaShape.strokeColor = UIColor.blue.cgColor
-        
-        return dsaShape
-    }()
-    
     public var label: UILabel = {
         var l = UILabel()
         l.textColor = .white
         return l
+    }()
+    
+    public lazy var progressRing: CAShapeLayer = {
+        let trackShape = CAShapeLayer()
+        var ring = CAShapeLayer()
+        let ringPath = UIBezierPath(arcCenter: CGPoint(x: bounds.width/1.35, y: 72), radius: 60, startAngle: -(.pi/2), endAngle: .pi * 2 - .pi/2, clockwise: true)
+        ring.lineWidth = 12
+        ring.strokeEnd = 0
+        ring.strokeColor = UIColor.blue.cgColor
+        ring.fillColor = UIColor.clear.cgColor
+        ring.path = ringPath.cgPath
+        return ring
+    }()
+    
+    public lazy var trackRing: CAShapeLayer = {
+        let trackShape = CAShapeLayer()
+        let ringPath = UIBezierPath(arcCenter: CGPoint(x: bounds.width/1.35, y: 72), radius: 60, startAngle: -(.pi/2), endAngle: .pi * 2, clockwise: true)
+        trackShape.path = ringPath.cgPath
+        trackShape.fillColor = UIColor.clear.cgColor
+        trackShape.lineWidth = 12
+        trackShape.strokeColor = UIColor.lightGray.cgColor
+        return trackShape
     }()
     
     init(categoryName: String, frame: CGRect) {
@@ -38,33 +50,23 @@ class TrackerView: UIView {
     }
     
     func commonInit() {
-        setupLabel()
-        setupCircle()
+        setupLabelnRing()
         self.backgroundColor = .green
     }
     
-    func setupLabel() {
+    func setupLabelnRing() {
         addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = categoryName
-
+        label.textAlignment = .center
         NSLayoutConstraint.activate([
             label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -140)
+            label.trailingAnchor.constraint(equalTo: self.centerXAnchor)
         ])
-    }
-    
-    func setupCircle() {
-        let circPT = CGPoint(x: self.bounds.midX/0.65, y: self.bounds.midY-350)
-//        let dsaPath = UIBezierPath(arcCenter: CGPoint(x: self.frame.maxX-60, y: self.frame.maxY/2), radius: 60, startAngle: 0, endAngle: .pi * 2, clockwise: true)
-        let dsaPath = UIBezierPath(arcCenter: circPT, radius: 60, startAngle: 0, endAngle: .pi * 2, clockwise: true)
         
-        dsaCircle.path = dsaPath.cgPath
-        dsaCircle.lineWidth = 12
-        dsaCircle.strokeColor = UIColor.blue.cgColor
-        dsaCircle.fillColor = UIColor.clear.cgColor
-        self.layer.addSublayer(dsaCircle)
+        layer.addSublayer(trackRing)
+        layer.addSublayer(progressRing)
     }
     
 }

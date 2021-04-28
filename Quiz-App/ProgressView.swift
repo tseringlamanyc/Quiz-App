@@ -9,18 +9,6 @@ import UIKit
 
 class ProgressView: UIView {
     
-//    let centerXTracker: CGFloat = UIScreen.main.bounds.maxX/1.45
-    
-//    public var dsaCircle: CAShapeLayer = {
-//        var dsaShape = CAShapeLayer()
-//        var dsaPath = UIBezierPath(arcCenter: CGPoint(x: UIScreen.main.bounds.maxX/1.35, y: UIScreen.main.bounds.maxY/2), radius: 60, startAngle: 0, endAngle: .pi * 2, clockwise: true)
-//        dsaShape.path = dsaPath.cgPath
-//        dsaShape.lineWidth = 12
-//        dsaShape.strokeColor = UIColor.blue.cgColor
-//
-//        return dsaShape
-//    }()
-    
     public lazy var dsaTracker: TrackerView = {
         var dsaTV = TrackerView(categoryName: "DSA YOOO", frame: self.frame)
         return dsaTV
@@ -36,22 +24,29 @@ class ProgressView: UIView {
         return iOSTV
     }()
     
+    public lazy var testButton: UIButton = {
+        var button = UIButton()
+        button.setTitle("Test", for: .normal)
+        button.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
+        button.backgroundColor = .magenta
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
-//        layer.addSublayer(dsaCircle)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
-//        layer.addSublayer(dsaCircle)
     }
     
     func commonInit() {
         setupDSATracker()
         setupSwiftTracker()
         setupiOSTracker()
+        setupButton()
     }
     
     func setupDSATracker() {
@@ -62,7 +57,7 @@ class ProgressView: UIView {
             dsaTracker.centerYAnchor.constraint(equalTo: centerYAnchor),
             dsaTracker.heightAnchor.constraint(equalToConstant: 144),
             dsaTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
-        ])
+        ]) 
     }
     
     func setupSwiftTracker() {
@@ -70,7 +65,7 @@ class ProgressView: UIView {
         swiftTracker.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             swiftTracker.centerXAnchor.constraint(equalTo: centerXAnchor),
-            swiftTracker.bottomAnchor.constraint(equalTo: dsaTracker.topAnchor, constant: -12),
+            swiftTracker.bottomAnchor.constraint(equalTo: dsaTracker.topAnchor, constant: -20),
             swiftTracker.heightAnchor.constraint(equalToConstant: 144),
             swiftTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
         ])
@@ -81,10 +76,54 @@ class ProgressView: UIView {
         iOSTracker.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             iOSTracker.centerXAnchor.constraint(equalTo: centerXAnchor),
-            iOSTracker.topAnchor.constraint(equalTo: dsaTracker.bottomAnchor, constant: 12),
+            iOSTracker.topAnchor.constraint(equalTo: dsaTracker.bottomAnchor, constant: 20),
             iOSTracker.heightAnchor.constraint(equalToConstant: 144),
             iOSTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
         ])
     }
     
+    func setupButton() {
+        addSubview(testButton)
+        testButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            testButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            testButton.topAnchor.constraint(equalTo: iOSTracker.bottomAnchor, constant: 20),
+            testButton.heightAnchor.constraint(equalToConstant: 50),
+            testButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-80)
+        ])
+    }
+    
+    @objc func handleTap() {
+//        print("TAPPED")
+//
+//        let dsaAnimate = CABasicAnimation(keyPath: "strokeEnd")
+//
+//        dsaAnimate.toValue = 0.25
+//        dsaAnimate.duration = 3
+//        dsaAnimate.isRemovedOnCompletion = false
+//        dsaAnimate.fillMode = .forwards
+//        dsaTracker.progressRing.add(dsaAnimate, forKey: "animation")
+//
+//        print(dsaTracker.progressRing.strokeStart)
+//
+//        let iOSAnimate = CABasicAnimation(keyPath: "strokeEnd")
+//
+//        iOSAnimate.toValue = 0.5
+//        iOSAnimate.duration = 3
+//        iOSAnimate.isRemovedOnCompletion = false
+//        iOSAnimate.fillMode = .forwards
+//        iOSTracker.progressRing.add(iOSAnimate, forKey: "animation")
+//
+//        let swiftAnimate = CABasicAnimation(keyPath: "strokeEnd")
+//
+//        swiftAnimate.toValue = 0.75
+//        swiftAnimate.duration = 3
+//        swiftAnimate.isRemovedOnCompletion = false
+//        swiftAnimate.fillMode = .forwards
+//        swiftTracker.progressRing.add(swiftAnimate, forKey: "animation")
+        UserDefaults.standard.saveScore(category: .dsa, percent: 0.95)
+    }
+    
 }
+
+
