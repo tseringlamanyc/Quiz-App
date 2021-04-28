@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02815222263720F700E391CE /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02815221263720F700E391CE /* Question.swift */; };
+		028152252638751900E391CE /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028152242638751800E391CE /* ProgressView.swift */; };
+		0281522826388D1C00E391CE /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281522726388D1C00E391CE /* ProgressVC.swift */; };
+		02815231263891CC00E391CE /* TrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02815230263891CC00E391CE /* TrackerView.swift */; };
+		028152342639B19B00E391CE /* ProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028152332639B19B00E391CE /* ProgressViewModel.swift */; };
+		028152372639B55C00E391CE /* UserDefaults+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028152362639B55C00E391CE /* UserDefaults+Ext.swift */; };
 		848E0649262E51DE00D385CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E0648262E51DE00D385CC /* AppDelegate.swift */; };
 		848E064B262E51DE00D385CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E064A262E51DE00D385CC /* SceneDelegate.swift */; };
 		848E064D262E51DE00D385CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E064C262E51DE00D385CC /* ViewController.swift */; };
@@ -16,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02815221263720F700E391CE /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		028152242638751800E391CE /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		0281522726388D1C00E391CE /* ProgressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressVC.swift; sourceTree = "<group>"; };
+		02815230263891CC00E391CE /* TrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerView.swift; sourceTree = "<group>"; };
+		028152332639B19B00E391CE /* ProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewModel.swift; sourceTree = "<group>"; };
+		028152362639B55C00E391CE /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
 		848E0645262E51DE00D385CC /* Quiz-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		848E0648262E51DE00D385CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848E064A262E51DE00D385CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +71,12 @@
 				848E0648262E51DE00D385CC /* AppDelegate.swift */,
 				848E064A262E51DE00D385CC /* SceneDelegate.swift */,
 				848E064C262E51DE00D385CC /* ViewController.swift */,
+				0281522726388D1C00E391CE /* ProgressVC.swift */,
+				028152242638751800E391CE /* ProgressView.swift */,
+				02815230263891CC00E391CE /* TrackerView.swift */,
+				028152332639B19B00E391CE /* ProgressViewModel.swift */,
+				028152362639B55C00E391CE /* UserDefaults+Ext.swift */,
+				02815221263720F700E391CE /* Question.swift */,
 				848E064E262E51DE00D385CC /* Main.storyboard */,
 				848E0651262E51E000D385CC /* Assets.xcassets */,
 				848E0653262E51E000D385CC /* LaunchScreen.storyboard */,
@@ -138,6 +156,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				848E064D262E51DE00D385CC /* ViewController.swift in Sources */,
+				0281522826388D1C00E391CE /* ProgressVC.swift in Sources */,
+				02815231263891CC00E391CE /* TrackerView.swift in Sources */,
+				028152342639B19B00E391CE /* ProgressViewModel.swift in Sources */,
+				02815222263720F700E391CE /* Question.swift in Sources */,
+				028152372639B55C00E391CE /* UserDefaults+Ext.swift in Sources */,
+				028152252638751900E391CE /* ProgressView.swift in Sources */,
 				848E0649262E51DE00D385CC /* AppDelegate.swift in Sources */,
 				848E064B262E51DE00D385CC /* SceneDelegate.swift in Sources */,
 			);
