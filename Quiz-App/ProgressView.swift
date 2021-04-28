@@ -121,7 +121,10 @@ class ProgressView: UIView {
 //        swiftAnimate.isRemovedOnCompletion = false
 //        swiftAnimate.fillMode = .forwards
 //        swiftTracker.progressRing.add(swiftAnimate, forKey: "animation")
-        UserDefaults.standard.saveScore(category: .dsa, percent: 0.95)
+        var score = UserDefaults.standard.getScore(category: .dsa)
+        score.answered = 0.0
+        score.correct = 0.0
+        UserDefaults.standard.saveScore(category: .dsa, score: score)
     }
     
 }

@@ -14,7 +14,7 @@ class ProgressViewModel {
     public func animateRings() {
         
         let dsaAnimate = CABasicAnimation(keyPath: "strokeEnd")
-        dsaAnimate.toValue = UserDefaults.standard.getDSAStats(category: .dsa)
+        dsaAnimate.toValue = getScorePercent(category: .dsa)
         dsaAnimate.duration = 3
         dsaAnimate.isRemovedOnCompletion = false
         dsaAnimate.fillMode = .forwards
@@ -33,5 +33,12 @@ class ProgressViewModel {
         swiftAnimate.isRemovedOnCompletion = false
         swiftAnimate.fillMode = .forwards
         progressView.swiftTracker.progressRing.add(swiftAnimate, forKey: "animation")
+    }
+    
+    private func getScorePercent(category: Category) -> Double {
+        let score = UserDefaults.standard.getScore(category: category)
+        print(score.answered)
+        print(score.correct)
+        return ((100/score.answered) * score.correct) / 100
     }
 }

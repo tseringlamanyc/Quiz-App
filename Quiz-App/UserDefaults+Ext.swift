@@ -13,17 +13,32 @@ enum Category: String {
     case swift = "swift"
 }
 
+struct Score: Codable {
+    var correct: Double
+    var answered: Double
+}
+
 extension UserDefaults {
     
-//    static let dsaKey = "dsaKey"
-//    static let iosKey = "iosKey"
-//    static let swiftKey = "swiftKey"
-    
-    func getDSAStats(category: Category) -> Double {
-        return UserDefaults.standard.object(forKey: category.rawValue) as? Double ?? 0.0
+    func getScore(category: Category) -> Score {
+        
+        if let savedUserData = UserDefaults.standard.object(forKey: category.rawValue) as? Data {
+            let decoder = JSONDecoder()
+            if let savedScore = try? decoder.decode(Score.self, from: savedUserData) {
+                print("Saved user: \(savedScore.answered)")
+                return savedScore
+            }
+        }
+        
+        return Score(correct: 0.0, answered: 0.0)
     }
     
-    func saveScore(category: Category, percent: Double) {
-        UserDefaults.standard.set(percent, forKey: category.rawValue)
+    func saveScore(category: Category, score: Score) {
+//        UserDefaults.standard.set(percent, forKey: category.rawValue)
+        
+        let encoder = JSONEncoder()
+        if let encodedScore = try? encoder.encode(score) {
+            UserDefaults.standard.set(encodedScore, forKey: category.rawValue)
+        }
     }
 }
