@@ -9,18 +9,23 @@ import UIKit
 
 class ProgressView: UIView {
     
+    public lazy var headerView: HeaderView = {
+        let hV = HeaderView()
+        return hV
+    }()
+    
     public lazy var dsaTracker: TrackerView = {
-        var dsaTV = TrackerView(categoryName: "DSA YOOO", frame: self.frame)
+        var dsaTV = TrackerView(categoryName: "DSA", frame: self.frame)
         return dsaTV
     }()
     
     public lazy var swiftTracker: TrackerView = {
-        var swiftTV = TrackerView(categoryName: "SWIFT YOOO", frame: self.frame)
+        var swiftTV = TrackerView(categoryName: "Swift", frame: self.frame)
         return swiftTV
     }()
     
     public lazy var iOSTracker: TrackerView = {
-        var iOSTV = TrackerView(categoryName: "iOS YOOO", frame: self.frame)
+        var iOSTV = TrackerView(categoryName: "iOS", frame: self.frame)
         return iOSTV
     }()
     
@@ -43,10 +48,21 @@ class ProgressView: UIView {
     }
     
     func commonInit() {
+        setupHeaderView()
         setupDSATracker()
         setupSwiftTracker()
         setupiOSTracker()
         setupButton()
+    }
+    
+    func setupHeaderView() {
+        addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: topAnchor),
+            headerView.leftAnchor.constraint(equalTo: leftAnchor),
+            headerView.rightAnchor.constraint(equalTo: rightAnchor)
+        ])
     }
     
     func setupDSATracker() {
@@ -121,10 +137,16 @@ class ProgressView: UIView {
 //        swiftAnimate.isRemovedOnCompletion = false
 //        swiftAnimate.fillMode = .forwards
 //        swiftTracker.progressRing.add(swiftAnimate, forKey: "animation")
-        var score = UserDefaults.standard.getScore(category: .dsa)
-        score.answered = 0.0
-        score.correct = 0.0
-        UserDefaults.standard.saveScore(category: .dsa, score: score)
+        
+//        var score = UserDefaults.standard.getScore(category: .dsa)
+//        score.answered = 0.0
+//        score.correct = 0.0
+        let swiftScore = Score(correct: 180, answered: 200)
+        let dsaScore = Score(correct: 60, answered: 100)
+        let iosScore = Score(correct: 35, answered: 100)
+        UserDefaults.standard.saveScore(category: .dsa, score: dsaScore)
+        UserDefaults.standard.saveScore(category: .swift, score: swiftScore)
+        UserDefaults.standard.saveScore(category: .ios, score: iosScore)
     }
     
 }

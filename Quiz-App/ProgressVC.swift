@@ -17,8 +17,8 @@ class ProgressVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.animateRings()
+        viewModel.animateCards()
     }
     
-
+    
 }
