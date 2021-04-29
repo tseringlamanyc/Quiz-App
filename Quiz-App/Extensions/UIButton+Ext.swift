@@ -25,6 +25,8 @@ extension UIButton {
         self.layer.shadowOpacity = 1.0
         /// text color
         self.titleLabel?.textColor = UIColor.white
+        /// background color
+        self.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.2431372549, blue: 0.5254901961, alpha: 1)
     }
     
     func answerChoiceButton() {
@@ -36,6 +38,8 @@ extension UIButton {
         self.layer.shadowOpacity = 1.0
         /// text color
         self.titleLabel?.textColor = UIColor.white
+        /// background color
+        self.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.2431372549, blue: 0.5254901961, alpha: 1)
     }
 }
 
