@@ -94,33 +94,6 @@ class ProgressView: UIView {
     }
     
     @objc func handleTap() {
-//        print("TAPPED")
-//
-//        let dsaAnimate = CABasicAnimation(keyPath: "strokeEnd")
-//
-//        dsaAnimate.toValue = 0.25
-//        dsaAnimate.duration = 3
-//        dsaAnimate.isRemovedOnCompletion = false
-//        dsaAnimate.fillMode = .forwards
-//        dsaTracker.progressRing.add(dsaAnimate, forKey: "animation")
-//
-//        print(dsaTracker.progressRing.strokeStart)
-//
-//        let iOSAnimate = CABasicAnimation(keyPath: "strokeEnd")
-//
-//        iOSAnimate.toValue = 0.5
-//        iOSAnimate.duration = 3
-//        iOSAnimate.isRemovedOnCompletion = false
-//        iOSAnimate.fillMode = .forwards
-//        iOSTracker.progressRing.add(iOSAnimate, forKey: "animation")
-//
-//        let swiftAnimate = CABasicAnimation(keyPath: "strokeEnd")
-//
-//        swiftAnimate.toValue = 0.75
-//        swiftAnimate.duration = 3
-//        swiftAnimate.isRemovedOnCompletion = false
-//        swiftAnimate.fillMode = .forwards
-//        swiftTracker.progressRing.add(swiftAnimate, forKey: "animation")
         var score = UserDefaults.standard.getScore(category: .dsa)
         score.answered = 0.0
         score.correct = 0.0
