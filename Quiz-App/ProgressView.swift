@@ -16,16 +16,19 @@ class ProgressView: UIView {
     
     public lazy var dsaTracker: TrackerView = {
         var dsaTV = TrackerView(categoryName: "DSA", frame: self.frame)
+        dsaTV.layer.cornerRadius = 20
         return dsaTV
     }()
     
     public lazy var swiftTracker: TrackerView = {
         var swiftTV = TrackerView(categoryName: "Swift", frame: self.frame)
+        swiftTV.layer.cornerRadius = 20
         return swiftTV
     }()
     
     public lazy var iOSTracker: TrackerView = {
         var iOSTV = TrackerView(categoryName: "iOS", frame: self.frame)
+        iOSTV.layer.cornerRadius = 20
         return iOSTV
     }()
     
@@ -72,7 +75,7 @@ class ProgressView: UIView {
             dsaTracker.centerXAnchor.constraint(equalTo: centerXAnchor),
             dsaTracker.centerYAnchor.constraint(equalTo: centerYAnchor),
             dsaTracker.heightAnchor.constraint(equalToConstant: 144),
-            dsaTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+            dsaTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width*0.85)
         ]) 
     }
     
@@ -83,7 +86,7 @@ class ProgressView: UIView {
             swiftTracker.centerXAnchor.constraint(equalTo: centerXAnchor),
             swiftTracker.bottomAnchor.constraint(equalTo: dsaTracker.topAnchor, constant: -20),
             swiftTracker.heightAnchor.constraint(equalToConstant: 144),
-            swiftTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+            swiftTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width*0.85)
         ])
     }
     
@@ -94,7 +97,7 @@ class ProgressView: UIView {
             iOSTracker.centerXAnchor.constraint(equalTo: centerXAnchor),
             iOSTracker.topAnchor.constraint(equalTo: dsaTracker.bottomAnchor, constant: 20),
             iOSTracker.heightAnchor.constraint(equalToConstant: 144),
-            iOSTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+            iOSTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width*0.85)
         ])
     }
     

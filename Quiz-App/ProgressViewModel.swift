@@ -31,16 +31,17 @@ class ProgressViewModel {
     }
     
     private func animateCountLabel(percent: Double, label: UILabel) {
-        let _  = Timer.scheduledTimer(withTimeInterval: 3/percent, repeats: true) { (t) in
-
-            label.text =  "\(label.tag)%"
-
-            label.tag += 1
-            let percentInt = Int(percent)+1
-            if label.tag == percentInt {
-                    t.invalidate()
+        if percent > 0 {
+            let _  = Timer.scheduledTimer(withTimeInterval: 3/percent, repeats: true) { (t) in
+                label.text =  "\(label.tag)%"
+                label.tag += 1
+                let percentInt = Int(percent)+1
+                if label.tag == percentInt {
+                        t.invalidate()
+                    }
                 }
-            }
+        }
+        
     }
     
     public func ringAnimation(value: Double, ring: CAShapeLayer) {

@@ -21,7 +21,7 @@ class TrackerView: UIView {
     
     public lazy var progressRing: CAShapeLayer = {
         var ring = CAShapeLayer()
-        let ringPath = UIBezierPath(arcCenter: CGPoint(x: bounds.width/1.35, y: 72), radius: UIScreen.main.bounds.width/8, startAngle: -(.pi/2), endAngle: .pi * 2 - .pi/2, clockwise: true)
+        let ringPath = UIBezierPath(arcCenter: CGPoint(x: frame.width*0.65, y: 72), radius: UIScreen.main.bounds.width/8, startAngle: -(.pi/2), endAngle: .pi * 2 - .pi/2, clockwise: true)
         ring.lineWidth = 12
         ring.strokeEnd = 0
         ring.strokeColor = UIColor.blue.cgColor
@@ -33,7 +33,7 @@ class TrackerView: UIView {
     
     public lazy var trackRing: CAShapeLayer = {
         let trackShape = CAShapeLayer()
-        let ringPath = UIBezierPath(arcCenter: CGPoint(x: bounds.width/1.35, y: 72), radius: UIScreen.main.bounds.width/8, startAngle: -(.pi/2), endAngle: .pi * 2, clockwise: true)
+        let ringPath = UIBezierPath(arcCenter: CGPoint(x: frame.width*0.65, y: 72), radius: UIScreen.main.bounds.width/8, startAngle: -(.pi/2), endAngle: .pi * 2, clockwise: true)
         trackShape.path = ringPath.cgPath
         trackShape.fillColor = UIColor.clear.cgColor
         trackShape.lineWidth = 12
@@ -82,7 +82,7 @@ class TrackerView: UIView {
         addSubview(percentLabel)
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            percentLabel.centerXAnchor.constraint(equalTo: leftAnchor, constant: bounds.width/1.35),
+            percentLabel.centerXAnchor.constraint(equalTo: leftAnchor, constant: frame.width*0.65),
             percentLabel.centerYAnchor.constraint(equalTo: label.centerYAnchor),
             percentLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/4)
         ])
