@@ -23,6 +23,8 @@ extension UIButton {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = .zero
         self.layer.shadowOpacity = 1.0
+        /// text color
+        self.titleLabel?.textColor = UIColor.white
     }
     
     func answerChoiceButton() {
@@ -32,7 +34,12 @@ extension UIButton {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = .zero
         self.layer.shadowOpacity = 1.0
+        /// text color
+        self.titleLabel?.textColor = UIColor.white
     }
+}
+
+extension UIView {
     
     func animateButton(scale: CGFloat = 0.88, functionClosure: @escaping () -> ()) {
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
@@ -45,4 +52,11 @@ extension UIButton {
             }
         }
     }
+    
+    
+    @objc func animateButtonNoClosure() {
+        animateButton(functionClosure: noop)
+    }
+    
+    func noop() {}
 }
