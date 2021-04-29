@@ -38,6 +38,7 @@ class TrackerView: UIView {
         trackShape.fillColor = UIColor.clear.cgColor
         trackShape.lineWidth = 12
         trackShape.strokeColor = UIColor.lightGray.cgColor
+        
         return trackShape
     }()
     
@@ -71,9 +72,9 @@ class TrackerView: UIView {
         label.text = categoryName
         label.textAlignment = .center
         NSLayoutConstraint.activate([
-            label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            label.trailingAnchor.constraint(equalTo: self.centerXAnchor)
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            label.trailingAnchor.constraint(equalTo: centerXAnchor)
         ])
         
         layer.addSublayer(trackRing)
@@ -86,7 +87,5 @@ class TrackerView: UIView {
             percentLabel.centerYAnchor.constraint(equalTo: label.centerYAnchor),
             percentLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/4)
         ])
-        
     }
-    
 }
