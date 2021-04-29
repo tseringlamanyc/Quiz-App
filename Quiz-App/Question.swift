@@ -11,5 +11,5 @@ struct Question: Decodable {
     let category: String
     let question: String
     let correctAnswer: String
-    let incorrectAnswer: [String]
+    let incorrectAnswers: [String]
 }
