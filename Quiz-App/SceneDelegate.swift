@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // instantiating the window with a frame
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ProgressVC()
+        window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
     }
 

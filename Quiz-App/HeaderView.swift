@@ -41,8 +41,6 @@ class HeaderView: UIView {
         label.string = "Quiz App"
         label.contentsScale = UIScreen.main.scale
         self.layer.addSublayer(label)
-       
-        print(UIScreen.main.bounds.height)
     }
 
 }
