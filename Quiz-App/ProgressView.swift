@@ -9,18 +9,26 @@ import UIKit
 
 class ProgressView: UIView {
     
+    public lazy var headerView: HeaderView = {
+        let hV = HeaderView()
+        return hV
+    }()
+    
     public lazy var dsaTracker: TrackerView = {
-        var dsaTV = TrackerView(categoryName: "DSA YOOO", frame: self.frame)
+        var dsaTV = TrackerView(categoryName: "DSA", frame: self.frame)
+        dsaTV.layer.cornerRadius = 20
         return dsaTV
     }()
     
     public lazy var swiftTracker: TrackerView = {
-        var swiftTV = TrackerView(categoryName: "SWIFT YOOO", frame: self.frame)
+        var swiftTV = TrackerView(categoryName: "Swift", frame: self.frame)
+        swiftTV.layer.cornerRadius = 20
         return swiftTV
     }()
     
     public lazy var iOSTracker: TrackerView = {
-        var iOSTV = TrackerView(categoryName: "iOS YOOO", frame: self.frame)
+        var iOSTV = TrackerView(categoryName: "iOS", frame: self.frame)
+        iOSTV.layer.cornerRadius = 20
         return iOSTV
     }()
     
@@ -43,10 +51,21 @@ class ProgressView: UIView {
     }
     
     func commonInit() {
+        setupHeaderView()
         setupDSATracker()
         setupSwiftTracker()
         setupiOSTracker()
         setupButton()
+    }
+    
+    func setupHeaderView() {
+        addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: topAnchor),
+            headerView.leftAnchor.constraint(equalTo: leftAnchor),
+            headerView.rightAnchor.constraint(equalTo: rightAnchor)
+        ])
     }
     
     func setupDSATracker() {
@@ -56,7 +75,7 @@ class ProgressView: UIView {
             dsaTracker.centerXAnchor.constraint(equalTo: centerXAnchor),
             dsaTracker.centerYAnchor.constraint(equalTo: centerYAnchor),
             dsaTracker.heightAnchor.constraint(equalToConstant: 144),
-            dsaTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+            dsaTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width*0.85)
         ]) 
     }
     
@@ -67,7 +86,7 @@ class ProgressView: UIView {
             swiftTracker.centerXAnchor.constraint(equalTo: centerXAnchor),
             swiftTracker.bottomAnchor.constraint(equalTo: dsaTracker.topAnchor, constant: -20),
             swiftTracker.heightAnchor.constraint(equalToConstant: 144),
-            swiftTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+            swiftTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width*0.85)
         ])
     }
     
@@ -78,7 +97,7 @@ class ProgressView: UIView {
             iOSTracker.centerXAnchor.constraint(equalTo: centerXAnchor),
             iOSTracker.topAnchor.constraint(equalTo: dsaTracker.bottomAnchor, constant: 20),
             iOSTracker.heightAnchor.constraint(equalToConstant: 144),
-            iOSTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+            iOSTracker.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width*0.85)
         ])
     }
     
@@ -94,10 +113,14 @@ class ProgressView: UIView {
     }
     
     @objc func handleTap() {
-        var score = UserDefaults.standard.getScore(category: .dsa)
-        score.answered = 0.0
-        score.correct = 0.0
-        UserDefaults.standard.saveScore(category: .dsa, score: score)
+
+        let swiftScore = Score(correct: 180, answered: 200)
+        let dsaScore = Score(correct: 60, answered: 100)
+        let iosScore = Score(correct: 35, answered: 100)
+        UserDefaults.standard.saveScore(category: .dsa, score: dsaScore)
+        UserDefaults.standard.saveScore(category: .swift, score: swiftScore)
+        UserDefaults.standard.saveScore(category: .ios, score: iosScore)
+
     }
     
 }

@@ -8,10 +8,11 @@
 import Foundation
 
 enum Category: String {
-    case dsa = "dsa"
-    case ios = "ios"
-    case swift = "swift"
+    case dsa = "DSA"
+    case ios = "iOS"
+    case swift = "Swift"
 }
+
 
 struct Score: Codable {
     var correct: Double
@@ -33,9 +34,7 @@ extension UserDefaults {
         return Score(correct: 0.0, answered: 0.0)
     }
     
-    func saveScore(category: Category, score: Score) {
-//        UserDefaults.standard.set(percent, forKey: category.rawValue)
-        
+    func saveScore(category: Category, score: Score) {        
         let encoder = JSONEncoder()
         if let encodedScore = try? encoder.encode(score) {
             UserDefaults.standard.set(encodedScore, forKey: category.rawValue)
